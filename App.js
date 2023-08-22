@@ -22,7 +22,6 @@ export default function App() {
          <Stack.Screen name="TasbihScreen" component={TasbihScreen}/>
       </Stack.Navigator>       
     </NavigationContainer>   
-
   );
 }
 
