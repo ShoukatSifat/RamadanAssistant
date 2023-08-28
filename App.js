@@ -6,10 +6,10 @@ import QuranChapters from "./Screen/QuranChapters";
 import ChapterId from "./Screen/ChapterId";
 import TasbihScreen from "./Screen/Tasbih";
 import Donation from "./Screen/DonationMain";
-import MapScreen from './Screen/MapScreen'; // Import the MapScreen component
+import MapScreen from './Screen/MapScreen'; 
 import SalahAlarm from './Screen/SalahAlarm'; 
+import PaymentGatewayScreen from "./Screen/Payment";
 
-// ... Other imports and code ...
 
 const Stack = createStackNavigator();
 
@@ -23,9 +23,9 @@ export default function App() {
         <Stack.Screen name="QuranChapters" component={QuranChapters} />
         <Stack.Screen name="ChapterId" component={ChapterId} />
         <Stack.Screen name="TasbihScreen" component={TasbihScreen} />
-        {/* Add the MapScreen route */}
         <Stack.Screen name="MapScreen" component={MapScreen} />
         <Stack.Screen name="SalahAlarm" component={SalahAlarm} />
+        <Stack.Screen name="Payment" component={PaymentGatewayScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

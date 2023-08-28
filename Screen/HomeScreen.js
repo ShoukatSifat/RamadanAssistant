@@ -77,11 +77,19 @@ function HomeScreen() {
         </TouchableOpacity>
 
 
+
+
         <TouchableOpacity
-          style={[{ backgroundColor: '#B5C7E6', marginBottom: 10, }]}
-          onPress={() => navigation.navigate('Donation')}
+          style={styles.button}
+          onPress={() => navigation.navigate('Payment')}
         >
-          <Text style={styles.buttonText}>I Want to Donate</Text>
+          <ImageBackground
+            source={{ uri: 'https://img.freepik.com/premium-vector/donation-box-charity-concept-human-hands-putting-money-cash-love-heart-donation-box-together-helping-doing-charity-vector-illustration_140689-3158.jpg?w=2000' }}
+            style={styles.buttonBackground}
+            imageStyle={{ resizeMode: 'cover' }}
+          >
+            <Text style={styles.buttonText}>Donation</Text>
+          </ImageBackground>
         </TouchableOpacity>
 
       </View>
