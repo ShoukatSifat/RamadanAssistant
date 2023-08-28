@@ -32,10 +32,12 @@ const TasbihScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>Tasbih Counter</Text>
+        <Text style={styles.countText}>{count}</Text>
+      </View>
       <View style={styles.tasbihContainer}>
-        <Text style={styles.count}>{count}</Text>
-        
-        <View style={{ flexDirection: 'row' }}>
+        <View style={styles.buttonsContainer}>
           <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
             <Text style={[styles.buttonText, styles.resetButtonText]}>Reset</Text>
           </TouchableOpacity>
@@ -79,40 +81,36 @@ const TasbihScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1F1F1F',
-    padding: 20,
+    backgroundColor: '#F2F2F2',
+  },
+  header: {
+    alignItems: 'center',
+    paddingTop: 50,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  countText: {
+    fontSize: 36,
+    color: '#333',
   },
   tasbihContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 20,
   },
-  notesContainer: {
-    flex: 1,
-    alignSelf: 'stretch',
-    marginVertical: 32,
-  },
-  count: {
-    fontSize: 72,
-    marginBottom: 32,
-    color: '#FFFFFF',
-    textAlign: 'center',
-    textShadowColor: '#000000',
-    textShadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    textShadowRadius: 5,
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   button: {
     backgroundColor: '#4CAF50',
-    borderRadius: 9999,
-    width: 120,
-    height: 120,
+    borderRadius: 999,
+    width: 100,
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 16,
-    marginHorizontal: 25,
   },
   buttonText: {
     color: '#FFFFFF',
@@ -120,15 +118,17 @@ const styles = StyleSheet.create({
   },
   resetButton: {
     backgroundColor: '#FF5722',
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 16,
-    alignItems: 'center',
   },
   resetButtonText: {
-    color: '#FFFFFF',
     fontSize: 16,
+  },
+  notesContainer: {
+    flex: 1,
+    marginTop: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    borderTopWidth: 1,
+    borderColor: '#CCC',
   },
   noteInput: {
     height: 48,
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 16,
     marginBottom: 16,
-    color: '#FFFFFF',
+    color: '#333',
     fontSize: 14,
   },
   addNoteButton: {
@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 12,
-    marginBottom: 16,
     alignItems: 'center',
   },
   notesList: {
@@ -156,20 +155,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#2C2C2C',
+    backgroundColor: '#FFFFFF',
     borderRadius: 8,
     paddingHorizontal: 16,
     paddingVertical: 8,
     marginBottom: 8,
+    borderColor: '#CCC',
+    borderWidth: 1,
   },
   noteText: {
-    fontSize: 16,
-    color: '#fff',
+    fontSize: 14,
+    color: '#333',
   },
   deleteButton: {
     backgroundColor: '#FF5722',
     borderRadius: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: 10,
     paddingVertical: 6,
   },
   deleteButtonText: {
