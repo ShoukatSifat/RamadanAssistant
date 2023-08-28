@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, FlatList, Vibration } from 'react-native';
 
 const TasbihScreen = () => {
   const [count, setCount] = useState(0);
@@ -8,10 +8,12 @@ const TasbihScreen = () => {
 
   const handleCount = () => {
     setCount(count + 1);
+    Vibration.vibrate(50); // Vibrate for 50 milliseconds
   }
 
   const handleReset = () => {
     setCount(0);
+    Vibration.vibrate([0, 30, 20, 30]); // Vibrate in a pattern: 0ms, 30ms, 20ms, 30ms
   }
 
   const handleNoteChange = (text) => {
