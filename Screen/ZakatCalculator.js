@@ -35,61 +35,63 @@ const ZakatCalculator = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.formContainer}>
-        <Text style={styles.label}>Gold (grams):</Text>
-        <TextInput
-          style={styles.input}
-          value={gold}
-          keyboardType="numeric"
-          onChangeText={setGold}
-        />
-        <Text style={styles.label}>Silver (grams):</Text>
-        <TextInput
-          style={styles.input}
-          value={silver}
-          keyboardType="numeric"
-          onChangeText={setSilver}
-        />
-        <Text style={styles.label}>Cash (BDT):</Text>
-        <TextInput
-          style={styles.input}
-          value={cash}
-          keyboardType="numeric"
-          onChangeText={setCash}
-        />
-        <Text style={styles.label}>Investments (BDT):</Text>
-        <TextInput
-          style={styles.input}
-          value={investments}
-          keyboardType="numeric"
-          onChangeText={setInvestments}
-        />
-        <Text style={styles.label}>Other Assets (BDT):</Text>
-        <TextInput
-          style={styles.input}
-          value={otherAssets}
-          keyboardType="numeric"
-          onChangeText={setOtherAssets}
-        />
-        <Text style={styles.label}>Liabilities (BDT):</Text>
-        <TextInput
-          style={styles.input}
-          value={liabilities}
-          keyboardType="numeric"
-          onChangeText={setLiabilities}
-        />
-      </View>
+      <View style={styles.gradientBackground}>
+        <View style={styles.formContainer}>
+          <Text style={styles.label}>Gold (grams):</Text>
+          <TextInput
+            style={styles.input}
+            value={gold}
+            keyboardType="numeric"
+            onChangeText={setGold}
+          />
+          <Text style={styles.label}>Silver (grams):</Text>
+          <TextInput
+            style={styles.input}
+            value={silver}
+            keyboardType="numeric"
+            onChangeText={setSilver}
+          />
+          <Text style={styles.label}>Cash (BDT):</Text>
+          <TextInput
+            style={styles.input}
+            value={cash}
+            keyboardType="numeric"
+            onChangeText={setCash}
+          />
+          <Text style={styles.label}>Investments (BDT):</Text>
+          <TextInput
+            style={styles.input}
+            value={investments}
+            keyboardType="numeric"
+            onChangeText={setInvestments}
+          />
+          <Text style={styles.label}>Other Assets (BDT):</Text>
+          <TextInput
+            style={styles.input}
+            value={otherAssets}
+            keyboardType="numeric"
+            onChangeText={setOtherAssets}
+          />
+          <Text style={styles.label}>Liabilities (BDT):</Text>
+          <TextInput
+            style={styles.input}
+            value={liabilities}
+            keyboardType="numeric"
+            onChangeText={setLiabilities}
+          />
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={calculateZakat}>
-          <Text style={styles.buttonText}>Calculate</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.resetButton} onPress={resetHandler}>
-          <Text style={styles.buttonText}>Reset</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={calculateZakat}>
+            <Text style={styles.buttonText}>Calculate</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.resetButton} onPress={resetHandler}>
+            <Text style={styles.buttonText}>Reset</Text>
+          </TouchableOpacity>
+        </View>
 
-      <Text style={styles.result}>Zakat Amount: {zakatAmount}</Text>
+        <Text style={styles.result}>Zakat Amount: {zakatAmount}</Text>
+      </View>
     </ScrollView>
   );
 };
@@ -97,8 +99,12 @@ const ZakatCalculator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2ECD8',
+  },
+  gradientBackground: {
+    flex: 1,
     padding: 20,
+    backgroundColor: '#F2ECD8', // Light beige background color
+    borderRadius: 10,
   },
   formContainer: {
     marginBottom: 20,
