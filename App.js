@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./Screen/HomeScreen"
@@ -7,9 +8,12 @@ import ChapterId from "./Screen/ChapterId";
 import TasbihScreen from "./Screen/Tasbih";
 import Donation from "./Screen/DonationMain";
 import MapScreen from './Screen/MapScreen';
-import SalahAlarm from './Screen/SalahAlarm';
 import PaymentGatewayScreen from "./Screen/Payment";
 import WebViewScreen from './Screen/WebViewScreen';
+import FeedbackScreen from './Screen/FeedbackScreen'; 
+import SalahTimingScreen from "./Screen/SalahTimingScreen"; // Import the new screen
+import AsmaAlHusnaScreen from "./Screen/AsmaAlHusnaScreen"; // Import the new screen
+
 
 const Stack = createStackNavigator();
 
@@ -25,8 +29,11 @@ export default function App() {
         <Stack.Screen name="ChapterId" component={ChapterId} />
         <Stack.Screen name="TasbihScreen" component={TasbihScreen} />
         <Stack.Screen name="MapScreen" component={MapScreen} />
-        <Stack.Screen name="SalahAlarm" component={SalahAlarm} />
+        <Stack.Screen name="SalahTimingScreen" component={SalahTimingScreen} />
         <Stack.Screen name="Payment" component={PaymentGatewayScreen} />
+        <Stack.Screen name="FeedbackScreen" component={FeedbackScreen} /> 
+        <Stack.Screen name="AsmaAlHusnaScreen" component={AsmaAlHusnaScreen} /> 
+
       </Stack.Navigator>
     </NavigationContainer>
   );

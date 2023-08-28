@@ -11,6 +11,12 @@ function HomeScreen() {
       imageUri: 'https://i0.wp.com/islamtheultimatepeace.com/wp-content/uploads/2021/09/holy-quran.jpeg?fit=2000%2C1333&ssl=1',
       navigateTo: 'QuranChapters',
     },
+
+    {
+      title: 'Asma Al Husna',
+      imageUri: 'https://cdn.dribbble.com/users/4493716/screenshots/15279956/media/b1dc947a76560772e9d4b132bbe399db.png',
+      navigateTo: 'AsmaAlHusnaScreen',
+    },
     {
       title: 'Mosque Near Me',
       imageUri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Exterior_of_Sultan_Ahmed_I_Mosque_in_Istanbul%2C_Turkey_002.jpg/1920px-Exterior_of_Sultan_Ahmed_I_Mosque_in_Istanbul%2C_Turkey_002.jpg',
@@ -26,22 +32,28 @@ function HomeScreen() {
       imageUri: 'https://img.freepik.com/premium-photo/photo-featuring-close-up-traditional-islamic-rosary-beads-tasbih_933496-20529.jpg',
       navigateTo: 'TasbihScreen',
     },
+
     {
-      title: 'Alarm for Salah',
+      title: 'Salah Timing',
       imageUri: 'https://play-lh.googleusercontent.com/4TqBPBBjEtznZ5O0mTvBsWqeLiTixzT0KRz4X8LG0rYUZWUe8MwJ3ztOlrKoXzE8yiE',
-      navigateTo: 'SalahAlarm',
+      navigateTo: 'SalahTimingScreen', // Navigate to the new screen
     },
     {
       title: 'Donation',
       imageUri: 'https://img.freepik.com/premium-vector/donation-box-charity-concept-human-hands-putting-money-cash-love-heart-donation-box-together-helping-doing-charity-vector-illustration_140689-3158.jpg?w=2000',
       navigateTo: 'Payment',
     },
+    {
+      title: 'Feedback',
+      imageUri: 'https://d18891bkk3ccc2.cloudfront.net/wp-content/uploads/2021/09/08145124/SHO_BLOG_EEFGuideance_210908-01.jpg', 
+      navigateTo: 'FeedbackScreen', 
+    },
   ];
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>MINNAH</Text>
+        <Text style={styles.title}>Minnah</Text>
       </View>
       <View style={styles.buttonContainer}>
         {buttons.map((button, index) => (
@@ -77,14 +89,15 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#333',
-    fontSize: 42,
+    fontSize: 64, // Increased font size for a stylish look
     fontWeight: 'bold',
     textShadowColor: '#000000',
     textShadowOffset: {
-      width: 1,
-      height: 1,
+      width: 2, // Added a bit more shadow offset for depth
+      height: 2,
     },
-    textShadowRadius: 2,
+    textShadowRadius: 5, // Increased shadow radius for more prominence
+    letterSpacing: 2, // Added letter spacing for a stylish effect
   },
   buttonContainer: {
     marginHorizontal: 16,
