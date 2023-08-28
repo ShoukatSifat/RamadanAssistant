@@ -5,14 +5,26 @@ const TasbihScreen = () => {
   const [count, setCount] = useState(0);
   const [note, setNote] = useState('');
   const [notes, setNotes] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
 
   const handleCount = () => {
-    setCount(count + 1);
-    Vibration.vibrate(50); // Vibrate for 50 milliseconds
+    if (selectedNoteId !== null) {
+      const updatedNotes = notes.map((item) => {
+        if (item.id === selectedNoteId) {
+          return { ...item, count: item.count + 1 };
+        }
+        return item;
+      });
+
+      setNotes(updatedNotes);
+      setCount(updatedNotes.find(item => item.id === selectedNoteId).count);
+      Vibration.vibrate(50); // Vibrate for 50 milliseconds
+    }
   }
 
   const handleReset = () => {
     setCount(0);
+    setSelectedNoteId(null);
     Vibration.vibrate([0, 30, 20, 30]); // Vibrate in a pattern: 0ms, 30ms, 20ms, 30ms
   }
 
@@ -20,9 +32,12 @@ const TasbihScreen = () => {
     setNote(text);
   }
 
-  const handleAddNote = () => {
+  const handleStartCounting = () => {
     if (note) {
-      setNotes([...notes, { id: Date.now(), text: note }]);
+      const newNote = { id: Date.now(), text: note, count: 0 };
+      setCount(0);
+      setNotes([newNote, ...notes]);
+      setSelectedNoteId(newNote.id);
       setNote('');
     }
   }
@@ -39,6 +54,18 @@ const TasbihScreen = () => {
         <Text style={styles.countText}>{count}</Text>
       </View>
       <View style={styles.tasbihContainer}>
+        <View style={styles.inputButtonContainer}>
+          <TextInput
+            style={styles.noteInput}
+            value={note}
+            onChangeText={handleNoteChange}
+            placeholderTextColor="#CCCCCC"
+            placeholder="Enter a Dua..."
+          />
+          <TouchableOpacity style={styles.startButton} onPress={handleStartCounting}>
+            <Text style={styles.buttonText}>Start Collecting</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={handleReset}>
             <Text style={[styles.buttonText, styles.resetButtonText]}>Reset</Text>
@@ -49,16 +76,6 @@ const TasbihScreen = () => {
         </View>
       </View>
       <View style={styles.notesContainer}>
-        <TextInput
-          style={styles.noteInput}
-          value={note}
-          onChangeText={handleNoteChange}
-          placeholderTextColor="#CCCCCC"
-          placeholder="Add a Dua you want to recite..."
-        />
-        <TouchableOpacity style={styles.addNoteButton} onPress={handleAddNote}>
-          <Text style={styles.buttonText}>Add Dua</Text>
-        </TouchableOpacity>
         <FlatList
           style={styles.notesList}
           data={notes}
@@ -66,6 +83,9 @@ const TasbihScreen = () => {
           renderItem={({ item }) => (
             <View style={styles.noteItem}>
               <Text style={styles.noteText}>{item.text}</Text>
+              <View style={styles.countBadge}>
+                <Text style={styles.countBadgeText}>{item.count}</Text>
+              </View>
               <TouchableOpacity
                 style={styles.deleteButton}
                 onPress={() => handleDeleteNote(item.id)}
@@ -102,9 +122,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
   },
+  inputButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 20,
   },
   button: {
     backgroundColor: '#4CAF50',
@@ -116,29 +142,30 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 16,
   },
   resetButton: {
     backgroundColor: '#FF5722',
   },
   resetButtonText: {
-    fontSize: 16,
+    fontSize: 14,
   },
-  notesContainer: {
+  startButton: {
+    backgroundColor: '#3498db',
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    alignItems: 'center',
     flex: 1,
-    marginTop: 20,
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-    borderTopWidth: 1,
-    borderColor: '#CCC',
+    marginLeft: 10,
   },
   noteInput: {
+    flex: 2,
     height: 48,
     borderColor: '#CCCCCC',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 16,
-    marginBottom: 16,
     color: '#333',
     fontSize: 14,
   },
@@ -149,9 +176,22 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     alignItems: 'center',
   },
+  notesContainer: {
+    flex: 1,
+    marginTop: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+    borderTopWidth: 1,
+    borderColor: '#CCC',
+  },
+  notesTitle: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 8,
+  },
   notesList: {
     flex: 1,
-    marginVertical: 16,
+    marginVertical: 10,
   },
   noteItem: {
     flexDirection: 'row',
@@ -168,6 +208,18 @@ const styles = StyleSheet.create({
   noteText: {
     fontSize: 14,
     color: '#333',
+    flex: 2,
+  },
+  countBadge: {
+    backgroundColor: '#4CAF50',
+    borderRadius: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginLeft: 8,
+  },
+  countBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 14,
   },
   deleteButton: {
     backgroundColor: '#FF5722',
