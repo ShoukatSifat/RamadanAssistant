@@ -49,10 +49,10 @@ function AsmaAlHusnaScreen() {
       />
       {filteredData.map((nameData) => (
         <View key={nameData.number} style={styles.nameContainer}>
-          <Text style={styles.name}>{nameData.name}</Text>
-          <Text style={styles.transliteration}>{nameData.transliteration}</Text>
-          <Text style={styles.number}>Number: {nameData.number}</Text>
-          <Text style={styles.meaning}>Meaning: {nameData.en?.meaning || 'Meaning not available'}</Text>
+          <Text style={[styles.text, styles.name]}>{nameData.name}</Text>
+          <Text style={[styles.text, styles.transliteration]}>{nameData.transliteration}</Text>
+          <Text style={[styles.text, styles.number]}>Number: {nameData.number}</Text>
+          <Text style={[styles.text, styles.meaning]}>Meaning: {nameData.en?.meaning || 'Meaning not available'}</Text>
         </View>
       ))}
     </ScrollView>
@@ -80,25 +80,25 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
   },
+  text: {
+    color: '#8B4513', // Set text color to dark brown
+    // Keep the previous font family here
+  },
   name: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 5,
-    color: '#333',
   },
   transliteration: {
     fontSize: 18,
     fontStyle: 'italic',
     marginBottom: 10,
-    color: '#666',
   },
   number: {
     fontSize: 16,
-    color: '#888',
   },
   meaning: {
     marginTop: 10,
-    color: '#555',
   },
 });
 
