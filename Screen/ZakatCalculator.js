@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet,SafeAreaView,Alert,ScrollView,TouchableOpacity } from 'react-native';
-import { SafeAreaFrameContext } from 'react-native-safe-area-context';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 
 const ZakatCalculator = () => {
   const [gold, setGold] = useState('');
@@ -11,19 +10,19 @@ const ZakatCalculator = () => {
   const [liabilities, setLiabilities] = useState('');
   const [zakatAmount, setZakatAmount] = useState(0);
 
-  
   const calculateZakat = () => {
-    const nisab = 48132; // Nisab amount for according to silver price for 612.36 gram in 2023
-    const zakatableAssets = (Number(gold)*5175) + (Number(silver) * 78.60 ) + Number(cash) + Number(investments) + Number(otherAssets);
+    const nisab = 48132; // Nisab amount according to silver price for 612.36 grams in 2023
+    const zakatableAssets = Number(gold) * 5175 + Number(silver) * 78.6 + Number(cash) + Number(investments) + Number(otherAssets);
     const netAssets = zakatableAssets - Number(liabilities);
     let zakat;
     if (netAssets < nisab) {
-    Alert.alert("You are not eligible to pay Zakat.");
+      Alert.alert('You are not eligible to pay Zakat.');
     } else {
-    zakat = netAssets * 0.025;
+      zakat = netAssets * 0.025;
     }
     setZakatAmount(parseFloat(zakat).toFixed(2));
-  }
+  };
+
   const resetHandler = () => {
     setGold('');
     setSilver('');
@@ -32,124 +31,124 @@ const ZakatCalculator = () => {
     setOtherAssets('');
     setLiabilities('');
     setZakatAmount('');
-    };
+  };
+
   return (
-    <ScrollView style={{flex:2,backgroundColor:'#F2ECD8',}}>
-        <View style={styles.container}>
-        <Text style={styles.label}>Gold:</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.formContainer}>
+        <Text style={styles.label}>Gold (grams):</Text>
         <TextInput
-            style={styles.input}
-            value={gold}
-            placeholder={'Grams of Gold'}
-            keyboardType='numeric'
-            onChangeText={setGold}
+          style={styles.input}
+          value={gold}
+          keyboardType="numeric"
+          onChangeText={setGold}
         />
-        <Text style={styles.label}>Silver:</Text>
+        <Text style={styles.label}>Silver (grams):</Text>
         <TextInput
-            style={styles.input}
-            value={silver}
-            placeholder={'Grams of Silver'}
-            keyboardType='numeric'
-            onChangeText={setSilver}
+          style={styles.input}
+          value={silver}
+          keyboardType="numeric"
+          onChangeText={setSilver}
         />
-        <Text style={styles.label}>Cash:</Text>
+        <Text style={styles.label}>Cash (BDT):</Text>
         <TextInput
-            style={styles.input}
-            value={cash}
-            placeholder={'Cash in BDT'}
-            keyboardType='numeric'
-            onChangeText={setCash}
+          style={styles.input}
+          value={cash}
+          keyboardType="numeric"
+          onChangeText={setCash}
         />
+        <Text style={styles.label}>Investments (BDT):</Text>
+        <TextInput
+          style={styles.input}
+          value={investments}
+          keyboardType="numeric"
+          onChangeText={setInvestments}
+        />
+        <Text style={styles.label}>Other Assets (BDT):</Text>
+        <TextInput
+          style={styles.input}
+          value={otherAssets}
+          keyboardType="numeric"
+          onChangeText={setOtherAssets}
+        />
+        <Text style={styles.label}>Liabilities (BDT):</Text>
+        <TextInput
+          style={styles.input}
+          value={liabilities}
+          keyboardType="numeric"
+          onChangeText={setLiabilities}
+        />
+      </View>
 
-        <Text style={styles.label}>Investments:</Text>
-        <TextInput
-            style={styles.input}
-            value={investments}
-            placeholder={'Investments in BDT'}
-            keyboardType='numeric'
-            onChangeText={setInvestments}
-        />
-        <Text style={styles.label}>Other Assets:</Text>
-        <TextInput
-            style={styles.input}
-            value={otherAssets}
-            keyboardType='numeric'
-            placeholder={'Other Assets Equivelent in BDT'}
-            onChangeText={setOtherAssets}
-        />
-        <Text style={styles.label}>Liabilities:</Text>
-        <TextInput
-            style={styles.input}
-            value={liabilities}
-            keyboardType='numeric'
-            placeholder={'Total Liabilities in BDT'}
-            onChangeText={setLiabilities}
-        />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={calculateZakat}>
+          <Text style={styles.buttonText}>Calculate</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.resetButton} onPress={resetHandler}>
+          <Text style={styles.buttonText}>Reset</Text>
+        </TouchableOpacity>
+      </View>
 
-        <View style={{flexDirection:'row',alignSelf:'center',marginVertical:5}}>
-
-            <TouchableOpacity style={styles.button} onPress={calculateZakat}>
-                <Text style={styles.buttonText}>Calculate </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.resetButton} onPress={resetHandler}>
-                <Text style={styles.buttonText}>Reset</Text>
-            </TouchableOpacity>
-        </View>
-
-        <Text style={styles.result}>Zakat Amount: {zakatAmount}</Text>
-        </View>
+      <Text style={styles.result}>Zakat Amount: {zakatAmount}</Text>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F2ECD8',
     padding: 20,
   },
+  formContainer: {
+    marginBottom: 20,
+  },
   label: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   input: {
     height: 40,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: '#ccc',
-    padding: 10,
+    paddingHorizontal: 10,
     marginBottom: 10,
-    borderRadius:20,
+    borderRadius: 8,
   },
-  result: {
-    marginTop: 20,
-    fontSize: 20,
-    fontWeight: 'bold',
-    borderColor:'green',
-    borderWidth:4,
-    borderRadius:40,
-    alignSelf:'center',
-    textAlign:'center',
-    width:'80%',
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 15,
   },
   button: {
     backgroundColor: '#3498db',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 10,
-    margin: 10,
-    width:'40%',
+    borderRadius: 8,
+    marginRight: 10,
   },
   resetButton: {
     backgroundColor: '#e74c3c',
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 10,
-    margin:10,
-    width:'40%',
+    borderRadius: 8,
+    marginRight: 10,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 16,
+  },
+  result: {
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderColor: 'green',
+    borderWidth: 2,
+    borderRadius: 8,
   },
 });
 
