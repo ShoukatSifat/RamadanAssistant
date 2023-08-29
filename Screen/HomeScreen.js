@@ -50,7 +50,7 @@ function HomeScreen() {
     },
     {
       title: 'Game',
-      imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpEIIUdTJXJjNn5FVjdnxVWE7boBuh-dOdsA&usqp=CAU', 
+      imageUri: 'https://play-lh.googleusercontent.com/6NPVQ-Evi3HyjGa0kHs0iDs-o4tnAJ5mtIuFGIMRRjxz0e_T0WmUXCxPC6ynLLnroE8', 
       navigateTo: 'Game', 
     },
   ];
