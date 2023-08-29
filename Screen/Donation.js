@@ -28,8 +28,6 @@ const styles = StyleSheet.create({
       flex: 2,
     },
     buttonStyle: {
-      borderWidth: 5,
-      borderColor: '#30528E',
       backgroundColor: '#9ABDDE',
       paddingVertical: '2%',
       paddingHorizontal: '5%',
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
       flex: 1,
       height: 150,
       width: 195,
-      resizeMode: 'cover',
+      resizeMode: 'contain',
     },
   });
   

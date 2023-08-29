@@ -5,12 +5,16 @@ import axios from 'axios';
 
 const MapScreen = () => {
   const [markers, setMarkers] = useState([]);
+  const [latitude, setLatitude] = useState(23.798564465063915);
+  const [longitude, setLongitude] = useState(90.45005504971012);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=23.798564465063915,90.45005504971012&radius=10000&type=mosque&key=AIzaSyCpQgZMyxH1eW7_41Hhu-R9HpBTcplqKOY'
+          'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location={latitude},{longitude}&radius=10000&type=mosque&key=AIzaSyCpQgZMyxH1eW7_41Hhu-R9HpBTcplqKOY'
+          .replace('{latitude}', latitude)
+          .replace('{longitude}', longitude)
         );
 
         if (response.data && response.data.results) {
@@ -22,15 +26,15 @@ const MapScreen = () => {
     };
 
     fetchData();
-  }, []);
+  }, [latitude, longitude]);
 
   return (
     <View style={styles.container}>
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: 23.798564465063915,
-          longitude: 90.45005504971012,
+          latitude,
+          longitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
