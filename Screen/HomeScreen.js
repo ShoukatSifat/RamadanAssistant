@@ -50,7 +50,7 @@ function HomeScreen() {
     },
     {
       title: 'Game',
-      imageUri: 'https://play-lh.googleusercontent.com/6NPVQ-Evi3HyjGa0kHs0iDs-o4tnAJ5mtIuFGIMRRjxz0e_T0WmUXCxPC6ynLLnroE8', 
+      imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlMBAkcXjzrO0xGRsuu67nl9LXFsTqXs10Q&usqp=CAU', 
       navigateTo: 'Game', 
     },
   ];
@@ -126,10 +126,11 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   buttonText: {
-    color: '#FFF',
-    fontSize: 20,
+    color: '#ffff',
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
+
   },
 });
 

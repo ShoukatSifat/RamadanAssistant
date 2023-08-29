@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   optionButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#648761',
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
