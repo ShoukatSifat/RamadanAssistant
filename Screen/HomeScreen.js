@@ -44,14 +44,14 @@ function HomeScreen() {
       navigateTo: 'Payment',
     },
     {
-      title: 'Feedback',
-      imageUri: 'https://d18891bkk3ccc2.cloudfront.net/wp-content/uploads/2021/09/08145124/SHO_BLOG_EEFGuideance_210908-01.jpg', 
-      navigateTo: 'FeedbackScreen', 
-    },
-    {
       title: 'Game',
       imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQlMBAkcXjzrO0xGRsuu67nl9LXFsTqXs10Q&usqp=CAU', 
       navigateTo: 'Game', 
+    },
+    {
+      title: 'Feedback',
+      imageUri: 'https://d18891bkk3ccc2.cloudfront.net/wp-content/uploads/2021/09/08145124/SHO_BLOG_EEFGuideance_210908-01.jpg', 
+      navigateTo: 'FeedbackScreen', 
     },
   ];
 
