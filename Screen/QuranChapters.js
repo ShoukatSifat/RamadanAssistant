@@ -48,15 +48,20 @@ const QuranChapters = () => {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: "#F2E3DB",
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 10,
+    marginBottom: 20,
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    elevation: 3,
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
+    color: '#8B4513',
   },
   details: {
     fontSize: 16,

@@ -8,13 +8,13 @@ function HomeScreen() {
   const buttons = [
     {
       title: 'Al-Quran',
-      imageUri: 'https://i0.wp.com/islamtheultimatepeace.com/wp-content/uploads/2021/09/holy-quran.jpeg?fit=2000%2C1333&ssl=1',
+      imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOvG1BvIknjF1gfpbsqYzk2yKdZgRPosVBnA&usqp=CAU',
       navigateTo: 'QuranChapters',
     },
 
     {
       title: 'Asma Al Husna',
-      imageUri: 'https://cdn.dribbble.com/users/4493716/screenshots/15279956/media/b1dc947a76560772e9d4b132bbe399db.png',
+      imageUri: 'https://cdn.dribbble.com/users/153122/screenshots/2789346/asmaul-husna-1-10-1_still_2x.gif?resize=400x300&vertical=center',
       navigateTo: 'AsmaAlHusnaScreen',
     },
     {
@@ -35,7 +35,7 @@ function HomeScreen() {
 
     {
       title: 'Salah Timing',
-      imageUri: 'https://play-lh.googleusercontent.com/4TqBPBBjEtznZ5O0mTvBsWqeLiTixzT0KRz4X8LG0rYUZWUe8MwJ3ztOlrKoXzE8yiE',
+      imageUri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoDbuPwg_AUUJcTg8lJb2oQ3Z_ffs1A_udCw&usqp=CAU',
       navigateTo: 'SalahTimingScreen', // Navigate to the new screen
     },
     {
@@ -47,6 +47,11 @@ function HomeScreen() {
       title: 'Feedback',
       imageUri: 'https://d18891bkk3ccc2.cloudfront.net/wp-content/uploads/2021/09/08145124/SHO_BLOG_EEFGuideance_210908-01.jpg', 
       navigateTo: 'FeedbackScreen', 
+    },
+    {
+      title: 'Game',
+      imageUri: 'https://play-lh.googleusercontent.com/4b20eLk9KsBBbmmxZFGkrOE65d__4bt0469UCe-K5ZX64SdcQq4Y0CnRV1mhPrVhOu8=w600-h300-pc0xffffff-pd', 
+      navigateTo: 'Game', 
     },
   ];
 
@@ -117,7 +122,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   },
   buttonImage: {
-    resizeMode: 'cover',
+    resizeMode: 'contain',
     borderRadius: 8,
   },
   buttonText: {

@@ -11,10 +11,9 @@ import MapScreen from './Screen/MapScreen';
 import PaymentGatewayScreen from "./Screen/Payment";
 import WebViewScreen from './Screen/WebViewScreen';
 import FeedbackScreen from './Screen/FeedbackScreen'; 
-import SalahTimingScreen from "./Screen/SalahTimingScreen"; // Import the new screen
-import AsmaAlHusnaScreen from "./Screen/AsmaAlHusnaScreen"; // Import the new screen
-
-
+import SalahTimingScreen from "./Screen/SalahTimingScreen";
+import AsmaAlHusnaScreen from "./Screen/AsmaAlHusnaScreen"; 
+import IslamicQuizAndGamesScreen from './Screen/Quiz';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -32,6 +31,7 @@ export default function App() {
         <Stack.Screen name="SalahTimingScreen" component={SalahTimingScreen} />
         <Stack.Screen name="Payment" component={PaymentGatewayScreen} />
         <Stack.Screen name="FeedbackScreen" component={FeedbackScreen} /> 
+        <Stack.Screen name="Game" component={IslamicQuizAndGamesScreen} /> 
         <Stack.Screen name="AsmaAlHusnaScreen" component={AsmaAlHusnaScreen} /> 
 
       </Stack.Navigator>
